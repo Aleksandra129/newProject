@@ -1,0 +1,12 @@
+name: Lint HTML & CSS
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: npm install -g htmlhint stylelint stylelint-config-standard
+      - run: htmlhint "**/*.html"
+      - run: stylelint "**/*.css"
